@@ -1,15 +1,15 @@
 #5. O nome do ELB e do Securitygroup do módulo também devem conter o workspace
 resource "aws_security_group" "allow-ssh" {
   vpc_id      = "${data.aws_vpc.vpc.id}"
-  name        = format("fiaplab-%s", terraform.workspace)
- 
+  name        = format("tfcincaojunior-%s", terraform.workspace)
+
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
- 
+
   ingress {
     from_port   = 22
     to_port     = 22
@@ -22,7 +22,7 @@ resource "aws_security_group" "allow-ssh" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
- 
+
   tags = {
     Name = "allow-ssh"
   }
